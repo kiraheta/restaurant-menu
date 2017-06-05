@@ -12,38 +12,38 @@ def showRestaurants():
 @app.route('/restaurant/new')
 def newRestaurant():
     """Creates a new restaurant"""
-    return "This page will be for making a new restaurant"
+    return render_template('newRestaurant.html',restaurant = restaurant)
 
 @app.route('/restaurant/restaurant_id/edit')
 def editRestaurant():
     """Edits a restaurant"""
-    return "This page will be for editing restaurants"
+    return render_template('editRestaurant.html',restaurant = restaurant)
 
 @app.route('/restaurant/restaurant_id/delete')
 def deleteRestaurant():
     """Deletes a restaurant"""
-    return "This page will be for deleting restaurants"
+    return render_template('deleteRestaurant.html',restaurant = restaurant)
 
 @app.route('/restaurant/restaurant_id')
 @app.route('/restaurant/restaurant_id/menu')
 def showMenu():
     """Returns a restaurant's menu"""
-    return "This page is the menu for a restaurant"
+    return render_template('menu.html',restaurant = restaurant)
 
 @app.route('/restaurant/restaurant_id/menu/new')
 def newMenuItem():
     """Creates a new restaurant menu item"""
-    return "This page is for making a new restaurant menu item"
+    return render_template('newMenuItem.html',restaurant = restaurant)
 
 @app.route('/restaurant/restaurant_id/menu/menu_id/edit')
 def editMenuItem():
     """Edits a new restaurant menu item"""
-    return "This page is for editing a restaurant menu item"
+    return render_template('editMenuItem.html',restaurant = restaurant)
 
 @app.route('/restaurant/restaurant_id/menu/menu_id/delete')
 def deleteMenuItem():
     """Delete a new restaurant menu item"""
-    return "This page is for deleting a restaurant menu item"
+    return render_template('deleteMenuItem.html',restaurant = restaurant)
 
 
 #Fake Restaurants
@@ -63,7 +63,8 @@ items = [
 'course':'Entree','id':'3'},{'name':'Iced Tea',
 'description':'with lemon','price':'$.99', 'course':'Beverage','id':'4'},
 {'name':'Spinach Dip', 'description':'creamy dip with fresh spinach',
-'price':'$1.99', 'course':'Appetizer','id':'5'} ]
+'price':'$1.99', 'course':'Appetizer','id':'5'}]
+
 item =  {'name':'Cheese Pizza','description':'made with fresh cheese',
 'price':'$5.99','course' :'Entree'}
 
