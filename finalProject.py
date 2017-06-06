@@ -50,7 +50,7 @@ def editRestaurant(restaurant_id):
 
 @app.route('/restaurant/<int:restaurant_id>/delete', methods = ['GET','POST'])
 def deleteRestaurant(restaurant_id):
-    """Deletes a restaurant"""
+    """Delete a restaurant"""
     restaurantToDelete = session.query(Restaurant).filter_by(
                          id = restaurant_id).one()
     if request.method == 'POST':
@@ -63,14 +63,14 @@ def deleteRestaurant(restaurant_id):
         return render_template('deleteRestaurant.html',
                restaurant = restaurantToDelete)
 
-
-
-
-@app.route('/restaurant/restaurant_id')
-@app.route('/restaurant/restaurant_id/menu')
-def showMenu():
+@app.route('/restaurant/<int:restaurant_id>')
+@app.route('/restaurant/<int:restaurant_id>/menu')
+def showMenu(restaurant_id):
     """Returns a restaurant's menu"""
-    return render_template('menu.html',restaurant = restaurant)
+    restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    items = session.query(MenuItem).filter_by(
+            restaurant_id = restaurant_id).all()
+    return render_template('menu.html', items = items, restaurant = restaurant)
 
 
 
